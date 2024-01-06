@@ -1,13 +1,14 @@
 from github import Github
 from github import Auth
-import sys
+import sys, os
 
 TOKEN_FILENAME = "token"
-COMMANDS = ["createRepo","deleteRepo"]
+COMMANDS = ["createRepo","deleteRepo", "defaultRoutine"]
 
 argc = len(sys.argv)
 argv = sys.argv[1:]
 
+##################### --- CLASS SECTION ##########################
 class PrepareGithub:
     def __init__(self, token):
 
@@ -34,6 +35,19 @@ class PrepareGithub:
 
     def __del__(self):
         self.g.close()    
+
+#################### --- FUNCTIONS SECTION --- ####################
+def initializeGit():
+    print("Writing Default README...\n")
+    os.system('''echo "# ''' + argv[1] + '''" >> README.md''')
+    print("Initializing Git...\n\n")
+    os.system("git init")
+    os.system("git add README.md")
+    os.system('''git commit -m "Initial Commit " ''')
+    os.system("git branch -M main")
+    os.system("git branch developMain")
+    os.system("git remote add origin git@github.com:gpapageorg/" + argv[1] + ".git")
+    os.system("git push -u origin main")
 
 
 def checkArgs():
@@ -63,9 +77,17 @@ def executeCommand(i):
         except:
             print("Error While Deleting")
 
+    elif argv[0] == COMMANDS[2]:
+        ''' ### EXECUTING DEFAULT ROUTINE 
+                1) INITIALIZING GIT
+                2) CREATING GITHUB REPOSITORY
+        '''
+        i.createRepo(argv[1])
+        initializeGit()
 
 
 
+############ --- MAIN FUNCTION EXECUTED WHEN RUN --- ##############
 def main():
     checkArgs() ### CHECKING GIVEN ARGUMENTS ###
     instance = PrepareGithub(TOKEN_FILENAME) ### CREATING MAIN GITHUB INSTANCE ###
