@@ -3,7 +3,8 @@ from github import Auth
 import sys, os
 
 TOKEN_FILENAME = "token"
-COMMANDS = ["createRepo","deleteRepo", "defaultRoutine"]
+COMMANDS = ["createRepo","deleteRepo", "defaultRoutine", "listRepos"]
+MAXARGS = 3 ### MAXIMUM ARGUMENT NUMBER ###
 
 argc = len(sys.argv)
 argv = sys.argv[1:]
@@ -17,8 +18,6 @@ class PrepareGithub:
         
         self.user = self.g.get_user()
 
-      #  for repo in self.user.get_repos():
-       #     print(repo.name)
 
     def createRepo(self, repoName):
         repo = self.user.create_repo(repoName)
@@ -26,6 +25,10 @@ class PrepareGithub:
     def deleteRepo(self, repoName):
         repo = self.user.get_repo(repoName)
         repo.delete()
+
+    def listRepos(self):
+      for repo in self.user.get_repos():
+        print(repo.name)
 
     def readToken(self, filename):
         f = open(filename, "r")
@@ -51,8 +54,8 @@ def initializeGit():
 
 
 def checkArgs():
-    if (argc != 3):
-        print("Error Wrong Arguments")
+    if argc > MAXARGS:
+        print("Wrong Argument Number")
         exit()
 
     if argv[0] not in COMMANDS:
@@ -63,27 +66,46 @@ def checkArgs():
         exit()
 
 def executeCommand(i):
-    if argv[0] == COMMANDS[0]: ### CREATE REPO ###
+    if argv[0] == COMMANDS[0] and argc == 3: ### CREATE REPO ###
         try:
             i.createRepo(argv[1])
             print("Repository Created With Name:", argv[1])
         except:
             print("Error While Creating")
+            exit()
 
-    elif argv[0] == COMMANDS[1]: ### DELETE REPO ###
+    elif argv[0] == COMMANDS[1] and argc == 3: ### DELETE REPO ###
         try:
             i.deleteRepo(argv[1])
             print("Repository Named", argv[1], "Deleted")
         except:
             print("Error While Deleting")
+            exit()
 
-    elif argv[0] == COMMANDS[2]:
+    elif argv[0] == COMMANDS[2] and argc == 3:
         ''' ### EXECUTING DEFAULT ROUTINE 
                 1) INITIALIZING GIT
                 2) CREATING GITHUB REPOSITORY
         '''
-        i.createRepo(argv[1])
-        initializeGit()
+        try:
+            i.createRepo(argv[1])
+            initializeGit()
+        except:
+            print("Error While Executing Default Routine")
+            exit()
+
+    elif argv[0] == COMMANDS[3] and argc == 2:
+        try:
+            i.listRepos()
+        except:
+            print("Error While Listing Repos")
+            exit()
+
+    else:
+        print("Error In Executing Command")
+        exit()
+        
+
 
 
 
