@@ -28,5 +28,4 @@ George Papageorgiou - - georg.papageorg@gmail.com
 Project Link: [https://github.com/gpapageorg/githubprep](https://github.com/gpapageorg/githubprep)
 
 ## :bangbang: Installation
-* First install the dependencies run pip3 install -r dependencies <br>
-* Then run the install script run ./install
+* Run the install script run ./install
