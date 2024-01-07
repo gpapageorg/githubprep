@@ -1,6 +1,6 @@
 <div align='center'>
 
-<h1>Github Repository Preperator</h1>
+<h1>Github Repository Preparator</h1>
 <p>This Tool Helps Automate The Process Of Creating The Git Repository For an Application</p>
 
 <h4> <span> · </span> <a href="https://github.com/gpapageorg/githubprep/blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/gpapageorg/githubprep/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/gpapageorg/githubprep/issues"> Request Feature </a> </h4>
