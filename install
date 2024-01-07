@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cp main.py /usr/local/bin
+cp token /usr/local/bin
+echo "python3 main.py \$1 \$2" >> /usr/local/bin/run
+chmod 755 /usr/local/bin/run
+
+ln -s /usr/local/bin/run /usr/local/bin/gitprep
+
