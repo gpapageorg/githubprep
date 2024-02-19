@@ -102,15 +102,15 @@ def executeCommand(i):
             print("Error While Listing Repos")
             exit()
     elif argv[0] == COMMANDS[4] and argc == 2:
-        print('''GitHub Repository Preperator, This Tool Prepares The Enviroment And The GitHub Repository.
+        print('''\033[94m\033[1mGitHub Repository Preperator, This Tool Prepares The Enviroment And The GitHub Repository.\033[0m
 
-        This Tool Has The Following Options:
+    This Tool Has The Following Options:
 
-        1) Default Routine, which initializes git and writes the first README.md file, then it creates a repository with
-            the given name, it also creates 2 branches one main (main) and one for development (developMain), and pushes the
+    1) Default Routine, which initializes git and writes the first README.md file, then it creates a repository with
+        the given name, it also creates 2 branches one main (main) and one for development (developMain), and pushes the
             changes to the repository  | use (defaultRoutine "NAME OF REPOSITORY")
-        2) Create Repository to create a new Repository | use (createRepo "NAME OF REPOSITORY")
-        3) Delete Repository to delete a repository| use (deleteRepo "NAME OF REPOSITORY")''')
+    2) Create Repository to create a new Repository | use (createRepo "NAME OF REPOSITORY")
+    3) Delete Repository to delete a repository| use (deleteRepo "NAME OF REPOSITORY")''')
     else:
         print("Error In Executing Command")
         exit()

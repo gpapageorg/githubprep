@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "Installing..."
-echo "Installing Dependencies"
 pip3 install -r dependencies
 echo "Copying main.py and token To /usr/local/bin"
 cp main.py /usr/local/bin
