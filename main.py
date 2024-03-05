@@ -2,7 +2,7 @@ from github import Github
 from github import Auth
 import sys, os
 
-TOKEN_FILENAME = "token"
+TOKEN_FILENAME = "/usr/local/bin/token"
 COMMANDS = ["createRepo","deleteRepo", "defaultRoutine", "listRepos", "help"]
 MAXARGS = 3 ### MAXIMUM ARGUMENT NUMBER ###
 
