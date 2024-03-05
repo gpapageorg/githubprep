@@ -5,7 +5,7 @@ pip3 install -r dependencies
 echo "Copying main.py and token To /usr/local/bin"
 cp main.py /usr/local/bin
 cp token /usr/local/bin
-echo "/usr/local/bin/python3 /usr/local/bin/main.py \$1 \$2" >> /usr/local/bin/run
+echo "/usr/bin/python3 /usr/local/bin/main.py \$1 \$2" >> /usr/local/bin/run
 chmod 755 /usr/local/bin/run
 
 ln -s /usr/local/bin/run /usr/local/bin/gitprep
